@@ -1,22 +1,53 @@
 <html>
-<head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <title>Paradise Contact Manager</title>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
+  </head>
+  </head>
+  <body>
+    <div class="bg">
+      <div class="container">
+        <div class="nav">
+          <div class="logo">
+            <div class="iconDiv"><img class="icon" src="./images/sunset-icon.png" alt="Sunset Icon" /></div>
+            <div id="title"><h1>The Paradise Group</h1></div>
+        </div>
 
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
-
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
-
-</body>
+          <div class="links">
+            <div><h2>Login</h2></div>
+            <div><h2>Sign Up</h2></div>
+          </div>
+        </div>
+    
+    <div class="loginContainer">
+      <div class="loginDiv">
+        <span id="inner-title">Login</span>
+        <div class="formField">
+          <h3>Username</h3>
+          <input type="text" id="loginName" placeholder="Enter username" /><br />
+        </div>
+        <div class="formField">
+          <h3>Password</h3>
+          <input type="password" id="loginPassword" placeholder="Enter password" /><br />
+        </div>
+        <button
+          type="button"
+          id="loginButton"
+          class="buttons"
+          onclick="doLogin();"
+        >
+          Login
+        </button>
+        <span id="loginResult"></span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </body>
 </html>
