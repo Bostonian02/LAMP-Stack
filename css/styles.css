@@ -2,11 +2,13 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .bg {
   /* The image used */
-  background-image: url('http://group3isamazing.xyz/images/bg-sunset2.jpg');
+  /* background-image: url('http://group3isamazing.xyz/images/bg-sunset2.jpg'); */
+  background-image: url('../images/bg-sunset2-opaque50.png');
 
   /* Full height */
   height: 100%;
@@ -39,6 +41,18 @@ body {
   min-width: 0;
 }
 
+.nav-links {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #005f73;
+}
+
+a:active {
+  color: #001219;
+}
+
 .logo {
   display: flex;
   padding-left: 25px;
@@ -60,6 +74,7 @@ body {
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
   color: #005f73;
+  padding-left: 10px;
 }
 
 .links {
@@ -95,8 +110,18 @@ body {
   align-items: center;
   justify-content: center;
   background-color: white;
+  height: 50%;
+  width: 50%;
+}
+
+.signUpDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
   height: 80%;
-  width: 80%;
+  width: 40%;
 }
 
 .formField {
@@ -122,16 +147,18 @@ body {
 .buttons {
   font-size: 30px;
   border-radius: 25px;
-  width: 50%;
+  width: 25%;
   font-family: 'Ubuntu', sans-serif;
   background-color: #001219;
   color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .buttons:hover {
-  background-color: #00d5124f;
-  color: #ffffff;
-  opacity: 50%;
+  background-color: #94d2bd;
+  color: black;
+  /* opacity: 50%; */
 }
 
 /* #loginName {
@@ -147,7 +174,7 @@ body {
   font-size: 30px;
 }
 
-h3 {
+.formLabel {
   font-family: 'Ubuntu', sans-serif;
   margin-top: 0;
 }
@@ -159,16 +186,18 @@ input[type='password'] {
   margin-bottom: 15px;
   height: 60px;
   font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
 }
 
 #inner-title {
   display: inline-block;
-  font-size: 2em;
+  font-size: 2.5em;
   width: 90%;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   color: black;
   padding-bottom: 25px;
+  font-weight: bold;
 }
 
 #loginResult {
