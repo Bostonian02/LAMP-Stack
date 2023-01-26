@@ -4,7 +4,6 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$date = date('Y-m-d H:i:s');
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
 	if( $conn->connect_error )
@@ -14,28 +13,24 @@
 	else
 	{
 		// Set up SQL statement
-		$stmt = $conn->prepare(
-			"INSERT INTO Users (DateCreated, DateLastLoggedIn, FirstName, LastName, Login, Password)
-			 VALUES (:date_created, :date_last_logged_in, :first_name, :last_name, :login, :password)");
-		$stmt->bindParam(":date_created", $date);
-		$stmt->bindParam(":date_last_logged_in", $date);
-		$stmt->bindParam(":first_name", $inData["firstName"]);
-		$stmt->bindParam(":last_name", $inData["lastName"]);
-		$stmt->bindParam(":login", $inData["login"]);
-		$stmt->bindParam(":password", $inData["password"]);
+		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES( ?, ?, ?, ?)");
+		$stmt->bind_param("ssss", $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
 		$stmt->execute();
-		$result = $stmt->get_result();
+		$stmt->close();
+		$conn->close();
+		returnWithError("");
+		//$result = $stmt->get_result();
 		
 		// Gets created row
-		if( $row = $result->fetch_assoc()  )
-		{
-			returnWithInfo( $row['ID'] );
-		}
-		else
-		{
-			// Was not able to create row
-			returnWithError("No Records Found");
-		}
+		//if( $row = $result->fetch_assoc()  )
+		//{
+		//	returnWithInfo( $row['ID'] );
+		//}
+		//else
+		//{
+		//	// Was not able to create row
+		//	returnWithError("No Records Found");
+		//}
 	}
 	
 	function getRequestInfo()
