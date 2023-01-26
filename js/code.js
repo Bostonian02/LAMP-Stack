@@ -42,7 +42,7 @@ function doLogin() {
 
         saveCookie()
 
-        window.location.href = 'color.html'
+        window.location.href = 'contact.html'
       }
     }
     xhr.send(jsonPayload)
@@ -53,8 +53,8 @@ function doLogin() {
 
 function doRegister() {
   userId = 0
-  // firstName = ''
-  // lastName = ''
+  firstName = ''
+  lastName = ''
 
   firstName = document.getElementById('firstName').value
   lastName = document.getElementById('lastName').value
