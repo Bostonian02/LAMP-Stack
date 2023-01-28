@@ -1,7 +1,7 @@
-// Updates the fields with no empty string input: ""
-// cannot update ID and userID
-
 <?php
+    // Updates the fields with no empty string input: ""
+    // cannot update ID and userID
+
 	$inData = getRequestInfo();
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -11,31 +11,27 @@
 	}
 	else
 	{
-    if ($inData["name"] != "")
-    {
-      $stmt = $conn->prepare("UPDATE Contacts SET Name = ? WHERE ID = ? ");
-      $stmt->bind_param("si", $inData["name"], $inData["id"]);
-      $stmt->execute();
-    }
+        if ($inData["name"] != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET Name = ? WHERE ID = ? ");
+            $stmt->bind_param("si", $inData["name"], $inData["id"]);
+            $stmt->execute();
+        }
 
-    if ($inData["phone"] != "")
-    {
-      $stmt = $conn->prepare("UPDATE Contacts SET Phone = ? WHERE ID = ? ");
-      $stmt->bind_param("si", $inData["phone"], $inData["id"]);;
-      $stmt->execute();
-    }
+        if ($inData["phone"] != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET Phone = ? WHERE ID = ? ");
+            $stmt->bind_param("si", $inData["phone"], $inData["id"]);
+            $stmt->execute();
+        }
 
-    if ($inData["email"] != "")
-    {
-      $stmt = $conn->prepare("UPDATE Contacts SET Email = ? WHERE ID = ? ");
-      $stmt->bind_param("si", $inData["email"], $inData["id"]);
-      $stmt->execute();
-    }
-
-    $stmt->close();
-		$conn->close();
-		$ret = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson($ret);
+        if ($inData["email"] != "")
+        {
+            $stmt = $conn->prepare("UPDATE Contacts SET Email = ? WHERE ID = ? ");
+            $stmt->bind_param("si", $inData["email"], $inData["id"]);
+            $stmt->execute();
+        }
+        returnWithError("test");
 	}
 
 	function getRequestInfo()
