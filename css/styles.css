@@ -307,12 +307,15 @@ input[type='password'] {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .loginDiv {
-    height: 40%;
+    height: 65%;
     width: 60%;
   }
   .signUpDiv {
-    height: 60%;
+    height: 95%;
     width: 45%;
+  }
+  .formLabel {
+    font-size: 1.2em;
   }
 }
 
