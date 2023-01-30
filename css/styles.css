@@ -130,7 +130,7 @@ a:active {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin:0;
+  margin: 0;
 }
 
 #loggedInDiv {
@@ -152,11 +152,11 @@ a:active {
   border-radius: 25px;
   width: 25%;
   font-family: 'Ubuntu', sans-serif;
-  background-color: #001219;
+  background-color: #005f73;
   color: white;
-  padding-top: .5em;
-  padding-bottom: .5em;
-  margin-bottom:.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .buttons:hover {
@@ -181,9 +181,10 @@ a:active {
 .formLabel {
   font-family: 'Ubuntu', sans-serif;
   margin-top: 0;
-  margin-bottom:.5em;
-  font-size:1.2em;
-  font-weight:700;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #005f73;
 }
 
 input[type='text'],
@@ -193,6 +194,7 @@ input[type='password'] {
   height: 25px;
   font-family: 'Ubuntu', sans-serif;
   font-size: 20px;
+  background-color: #dee2e6;
 }
 
 #inner-title {
@@ -201,10 +203,10 @@ input[type='password'] {
   width: 90%;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
-  color: black;
-  padding-bottom: .5em;
+  color: #005f73;
+  padding-bottom: 0.5em;
   font-weight: bold;
-  padding-top:.5em;
+  padding-top: 0.5em;
 }
 
 #loginResult {
@@ -249,3 +251,71 @@ input[type='password'] {
   font-family: 'Ubuntu', sans-serif;
   color: #95060a;
 } */
+
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) {
+  .loginDiv {
+    height: 20%;
+    width: 60%;
+  }
+  .signUpDiv {
+    height: 50%;
+    width: 45%;
+  }
+  .formLabel {
+    font-size: 2em;
+  }
+  #inner-title {
+    font-size: 2em;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+  .loginDiv {
+    height: 20%;
+    width: 60%;
+  }
+  .signUpDiv {
+    height: 50%;
+    width: 45%;
+  }
+  .formLabel {
+    font-size: 1.6em;
+  }
+  #inner-title {
+    font-size: 2.5em;
+  }
+  input[type='text'],
+  input[type='password'] {
+    height: 35px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .loginDiv {
+    height: 30%;
+    width: 60%;
+  }
+  .signUpDiv {
+    height: 60%;
+    width: 45%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .loginDiv {
+    height: 40%;
+    width: 60%;
+  }
+  .signUpDiv {
+    height: 60%;
+    width: 45%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
