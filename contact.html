@@ -1,26 +1,100 @@
 <html>
-<head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-	
-	<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function() 
-	{
-		readCookie();
-	}, false);
-	</script>
-	
-</head>
-<body>
+  <head>
+    <title>The Paradise Group - Contact Manager</title>
+    <script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu"
+      rel="stylesheet"
+    />
 
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
+    <script type="text/javascript">
+      document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+          readCookie()
+        },
+        false
+      )
+    </script>
+  </head>
+  <body>
+    <div class="bg-contact" id="bg-contact">
+      <div class="nav">
+        <div class="logo">
+          <div class="iconDiv">
+            <img
+              class="icon"
+              src="./images/sunset-icon.png"
+              alt="Sunset Icon"
+            />
+          </div>
+          <div id="title"><h2>The Paradise Group</h2></div>
+        </div>
 
-<div id="loggedInDiv">
-	<span id="userName"></span><br />
-	<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-</div>
+        <div class="links">
+          <div>
+            <h2>
+              <a href="" class="nav-links" onclick="doLogout();">Log Out</a>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-contact" id="contact-container">
+        <div>
+          <span id="userName"></span>
+          <span id="contactAddResult"></span>
+        </div>
+        <div class="actions">
+          <div class="searchBar">
+            <div class="searchIconDiv">
+              <img
+                src="./images/search.png"
+                alt="search icon"
+                id="searchIcon"
+              />
+            </div>
+            <input
+              id="contactText"
+              type="text"
+              placeholder="Search Contact..."
+              onkeypress="searchContact();"
+            />
+          </div>
+          <div class="addIcon">
+            <button onclick="openForm();">
+              <img src="./images/add.png" alt="add icon" id="addIcon" />
+            </button>
+          </div>
+        </div>
+
+        <div class="form-popup" id="addForm">
+          <div class="form-container">
+            <div class="addForm--title">
+              <h3>Add User Form</h3>
+            </div>
+            <label class="addForm--label">Name</label>
+            <input type="text" id="contactName" placeholder="Enter full name" />
+            <label class="addForm--label">Phone</label>
+            <input
+              type="tel"
+              id="contactPhone"
+              placeholder="Ex. 918-100-2343"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            />
+            <label class="addForm--label">Email</label>
+            <input id="contactEmail" type="email" placeholder="Enter email" />
+            <div class="div-addForm--button">
+              <button class="addForm--button" onclick="addContact();">
+                Add User
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
 
 <div id="accessUIDiv">
 	<br />
@@ -34,7 +108,6 @@
 	<input type="text" id="colorText" placeholder="Color To Add">
 	<button type="button" id="addColorButton" class="buttons" onclick="addColor();"> Add Color </button><br />
 	<span id="colorAddResult"></span>
-</div>
-
-</body>
+</div> -->
+  </body>
 </html>
