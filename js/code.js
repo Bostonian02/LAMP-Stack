@@ -191,12 +191,12 @@ function addContact() {
 }
 
 function searchContact() {
-  let srch = document.getElementById('searchText').value
+  let srch = document.getElementById('searchName').value
   document.getElementById('contactSearchResult').innerHTML = ''
 
   let contactList = ''
 
-  let tmp = { search: srch, userId: userId }
+  let tmp = { Name: srch, UserID: userId }
   let jsonPayload = JSON.stringify(tmp)
 
   let url = urlBase + '/SearchContacts.' + extension
@@ -217,6 +217,8 @@ function searchContact() {
             contactList += '<br />\r\n'
           }
         }
+
+        console.log(contactList)
 
         document.getElementsByTagName('p')[0].innerHTML = contactList
       }
