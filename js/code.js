@@ -139,7 +139,10 @@ function readCookie() {
     window.location.href = 'index.html'
   } else {
     document.getElementById('userName').innerHTML =
-      'Logged in as ' + firstName + ' ' + lastName
+      'Welcome ' +
+      capitalizeFirstLetter(firstName) +
+      ' ' +
+      capitalizeFirstLetter(lastName)
   }
 }
 
@@ -152,13 +155,22 @@ function doLogout() {
 }
 
 function addContact() {
-  let newColor = document.getElementById('colorText').value
-  document.getElementById('colorAddResult').innerHTML = ''
+  console.log('addContact Called')
+  let newContactName = document.getElementById('contactName').value
+  let newContactPhone = document.getElementById('contactPhone').value
+  let newContactEmail = document.getElementById('contactEmail').value
+  document.getElementById('contactAddResult').innerHTML = ''
 
-  let tmp = { color: newColor, userId, userId }
+  let tmp = {
+    name: newContactName,
+    phone: newContactPhone,
+    email: newContactEmail,
+    userID: userId,
+  }
   let jsonPayload = JSON.stringify(tmp)
-
-  let url = urlBase + '/AddColor.' + extension
+  console.log(jsonPayload)
+  // debugger
+  let url = urlBase + '/AddContact.' + extension
 
   let xhr = new XMLHttpRequest()
   xhr.open('POST', url, true)
@@ -166,26 +178,28 @@ function addContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('colorAddResult').innerHTML =
-          'Color has been added'
+        document.getElementById('contactAddResult').innerHTML =
+          'Contact has been added'
+        // console.log('this worked')
       }
     }
     xhr.send(jsonPayload)
   } catch (err) {
-    document.getElementById('colorAddResult').innerHTML = err.message
+    document.getElementById('contactAddResult').innerHTML = err.message
   }
+  closeForm()
 }
 
 function searchContact() {
   let srch = document.getElementById('searchText').value
-  document.getElementById('colorSearchResult').innerHTML = ''
+  document.getElementById('contactSearchResult').innerHTML = ''
 
-  let colorList = ''
+  let contactList = ''
 
   let tmp = { search: srch, userId: userId }
   let jsonPayload = JSON.stringify(tmp)
 
-  let url = urlBase + '/SearchColors.' + extension
+  let url = urlBase + '/SearchContacts.' + extension
 
   let xhr = new XMLHttpRequest()
   xhr.open('POST', url, true)
@@ -193,22 +207,41 @@ function searchContact() {
   try {
     xhr.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('colorSearchResult').innerHTML =
-          'Color(s) has been retrieved'
+        document.getElementById('contactSearchResult').innerHTML =
+          'Contact(s) has been retrieved'
         let jsonObject = JSON.parse(xhr.responseText)
 
         for (let i = 0; i < jsonObject.results.length; i++) {
-          colorList += jsonObject.results[i]
+          contactList += jsonObject.results[i]
           if (i < jsonObject.results.length - 1) {
-            colorList += '<br />\r\n'
+            contactList += '<br />\r\n'
           }
         }
 
-        document.getElementsByTagName('p')[0].innerHTML = colorList
+        document.getElementsByTagName('p')[0].innerHTML = contactList
       }
     }
     xhr.send(jsonPayload)
   } catch (err) {
-    document.getElementById('colorSearchResult').innerHTML = err.message
+    document.getElementById('contactSearchResult').innerHTML = err.message
   }
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function openForm() {
+  document.getElementById('addForm').style.display = 'flex'
+  document.getElementById('contact-container').style.background =
+    'rgba(255,255,255,.8)'
+  document.getElementById('contact-container').style.width = '100%'
+  // document.getElementById('bg-contact').style.backgroundImage =
+  //   "url('../images/bg-sunset2-opaque50.png')"
+}
+
+function closeForm() {
+  document.getElementById('addForm').style.display = 'none'
+  document.getElementById('contact-container').style.background = ''
+  document.getElementById('contact-container').style.width = '90%'
 }
