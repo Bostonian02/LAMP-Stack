@@ -12,13 +12,12 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID = ?");
+		$stmt = $conn->prepare("select * from Contacts where Name like ? and UserID = ?");
 		$contactName = "%" . $inData["Name"] . "%";
 		$stmt->bind_param("si", $contactName, $inData["UserID"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
-		
 		while($row = $result->fetch_assoc())
 		{
 			if( $searchCount > 0 )
@@ -26,7 +25,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			$searchResults .= '{"ID":' . $row["ID"] . ',"Name":"' . $row["Name"] . '","Phone":"' . $row["Phone"] . '","Email":"' . $row["Email"] . '","UserID":' . $row["UserID"] . '}';
 		}
 		
 		if( $searchCount == 0 )
