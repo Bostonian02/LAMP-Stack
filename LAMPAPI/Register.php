@@ -20,7 +20,7 @@
 		$last_id = $conn->insert_id;
 
 		if( $last_id = $conn->insert_id ){
-			returnWithInfo( $last_id );
+			returnWithInfo( $last_id, $inData["firstName"], $inData["lastName"]);
 		}
 		else{
 			returnWithError("Cant Fetch ID");
@@ -46,10 +46,10 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $id )
+	function returnWithInfo( $id, $first, $last)
 	{
 		// If return with an id > 0, user has been created
-		$retValue = '{"id":'.$id.',"error":""}';
+		$retValue = '{"id":'.$id.',"error":"", "firstName":"'.$first.'", "lastName":"'.$last.'"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
