@@ -222,6 +222,10 @@ input[type='password'] {
   background-color: #dee2e6;
 }
 
+#contactAddResult {
+  color: white;
+}
+
 .actions {
   display: flex;
   justify-content: center;
@@ -235,9 +239,9 @@ input[type='password'] {
 
 .searchIconDiv {
   background-color: #dee2e6;
-  padding-right: 0;
-  margin-right: 0;
-  border-radius: 5px 0 0 5px;
+  padding-left: 0;
+  margin-left: 0;
+  border-radius: 0 5px 5px 0;
   width: 50px;
   height: 50px;
   display: flex;
@@ -250,34 +254,47 @@ input[type='password'] {
   height: 30px;
 }
 
-.addIcon {
+.searchIcon--button {
+  border-style: none;
+  background-color: #dee2e6;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 3px #999;
+}
+
+.searchIcon--button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+.addIcon button {
   background-color: #dee2e6;
   width: 50px;
   height: 50px;
   margin-left: 1.5em;
   border-radius: 5px;
+  border: 1px inset gray;
 }
 
 #addIcon {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 
 .actions input[type='text'] {
   width: 650px;
   height: 50px;
-  margin-left: 0;
-  padding-left: 0;
+  margin-right: 0;
+  padding-right: 0;
   border-style: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px 0 0 5px;
 }
 
 .form-popup {
   display: none;
   justify-content: center;
   align-items: center;
-  height: 50%;
 }
 
 /* Add styles to the form container */
@@ -379,6 +396,39 @@ input[type='password'] {
 
 #logoutButton {
   width: 20%;
+}
+
+.tableDiv {
+  width: 100%;
+  display: none;
+}
+
+table {
+  margin-top: 1.5em;
+  width: 100%;
+  color: black;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+.tableHeading {
+  width: 100%;
+  font-size: 1.2em;
+  background-color: #ee9b00;
+}
+
+.tableHeading th {
+  padding: 10px 0 10px 0;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+tr {
+  border: 1px solid black;
 }
 
 /* select {

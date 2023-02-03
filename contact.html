@@ -47,19 +47,20 @@
         </div>
         <div class="actions">
           <div class="searchBar">
-            <div class="searchIconDiv">
-              <img
-                src="./images/search.png"
-                alt="search icon"
-                id="searchIcon"
-              />
-            </div>
             <input
-              id="contactText"
+              id="searchName"
               type="text"
               placeholder="Search Contact..."
-              onkeypress="searchContact();"
             />
+            <div class="searchIconDiv">
+              <button class="searchIcon--button" onclick="searchContact();">
+                <img
+                  src="./images/search.png"
+                  alt="search icon"
+                  id="searchIcon"
+                />
+              </button>
+            </div>
           </div>
           <div class="addIcon">
             <button onclick="openForm();">
@@ -67,7 +68,21 @@
             </button>
           </div>
         </div>
-
+        <div>
+          <div class="tableDiv" id="tableDiv">
+            <table>
+              <thead class="tableHeading">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
         <div class="form-popup" id="addForm">
           <div class="form-container">
             <div class="addForm--title">
