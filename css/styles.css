@@ -46,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   background: black;
+  position: relative;
 }
 
 .container-contact {
@@ -295,6 +296,10 @@ input[type='password'] {
   display: none;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Add styles to the form container */
@@ -443,17 +448,75 @@ tr {
   display: none;
 }
 
-/* #colorAddResult {
-  display: inline-block;
-  font-size: 0.8em;
-  width: 90%;
-  text-align: center;
-  margin-left: 5%;
-  margin-top: 2%;
-  margin-bottom: 1%;
-  font-family: 'Ubuntu', sans-serif;
-  color: #95060a;
-} */
+.pagination-controlsDiv {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: white;
+}
+
+#pagination-controls {
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+  padding: 5px 0 5px 0;
+}
+
+#pagination-controls button {
+  height: 35px;
+  background-color: #005f73;
+  /* background-image: linear-gradient(225deg, #005f73, #9b2226); */
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+  border-style: none;
+}
+
+#page-counter {
+  padding-top: 5px;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.edit {
+  height: 25px;
+  background-color: #005f73;
+  /* background-image: linear-gradient(225deg, #005f73, #9b2226); */
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 50px;
+  cursor: pointer;
+  border-style: none;
+  margin-right: 15px;
+}
+
+.save {
+  height: 25px;
+  background-color: #94d2bd;
+  /* background-image: linear-gradient(225deg, #005f73, #9b2226); */
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 50px;
+  cursor: pointer;
+  border-style: none;
+  margin-right: 15px;
+}
+
+.delete {
+  height: 25px;
+  background-color: #ae2012;
+  /* background-image: linear-gradient(225deg, #005f73, #9b2226); */
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 50px;
+  cursor: pointer;
+  border-style: none;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media screen and (max-width: 600px) {
