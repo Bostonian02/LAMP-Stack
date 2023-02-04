@@ -14,7 +14,7 @@
 	{
 		// Set up SQL statement
 		$stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES( ?, ?, ?, ?)");
-		$stmt->bind_param("ssss", $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
+		$stmt->bind_param("ssss", $inData["firstName"], $inData["lastName"], $inData["login"], hash("md5", $inData["password"]));
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$last_id = $conn->insert_id;
