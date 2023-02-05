@@ -8,6 +8,12 @@ let searchStr = ''
 
 const ids = []
 
+let currentPage = 1
+const prevBtn = document.getElementById('previous-page')
+const nextBtn = document.getElementById('next-page')
+const pageCounter = document.getElementById('page-counter')
+const entriesPerPage = 10
+
 function doLogin() {
   userId = 0
   firstName = ''
@@ -164,17 +170,20 @@ function addContact() {
   let newContactEmail = document.getElementById('contactEmail').value
   document.getElementById('contactAddResult').innerHTML = ''
   let nameSplit = newContactName.split(' ')
-  nameSplit[0] = capitalizeFirstLetter(nameSplit[0])
-  nameSplit[1] = capitalizeFirstLetter(nameSplit[1])
+  if (nameSplit.length == 2) {
+    nameSplit[0] = capitalizeFirstLetter(nameSplit[0])
+    nameSplit[1] = capitalizeFirstLetter(nameSplit[1])
+    newContactName = nameSplit.join(' ')
+  }
 
   let tmp = {
-    name: nameSplit.join(' '),
+    name: newContactName,
     phone: newContactPhone,
     email: newContactEmail,
     userID: userId,
   }
   let jsonPayload = JSON.stringify(tmp)
-  console.log(jsonPayload)
+  // console.log(jsonPayload)
   // debugger
   let url = urlBase + '/AddContact.' + extension
 
@@ -196,10 +205,13 @@ function addContact() {
   closeForm()
 }
 
-function searchContact(srch = document.getElementById('searchName').value) {
+function searchContact(
+  srch = document.getElementById('searchName').value,
+  currentPage = 1
+) {
   // let srch = document.getElementById('searchName').value
   // document.getElementById('contactSearchResult').innerHTML = ''
-  searchStr = document.getElementById('searchName').value
+  // searchStr = document.getElementById('searchName').value
   document.getElementById('tableDiv').style.display = 'block'
   let text = ''
 
@@ -217,53 +229,62 @@ function searchContact(srch = document.getElementById('searchName').value) {
         // document.getElementById('contactSearchResult').innerHTML =
         //   'Contact(s) has been retrieved'
         let jsonObject = JSON.parse(`${xhr.responseText}`)
-        console.log(jsonObject)
+        // console.log(jsonObject)
+        if (jsonObject.results.length <= entriesPerPage) {
+          prevBtn.style.display = 'none'
+          nextBtn.style.display = 'none'
+        } else {
+          prevBtn.style.display = 'inline-block'
+          nextBtn.style.display = 'inline-block'
+        }
 
-        for (let i = 0; i < jsonObject.results.length; i++) {
-          ids[i] = jsonObject.results[i].ID
+        pageCounter.innerHTML = `Page ${currentPage} of ${Math.ceil(
+          jsonObject.results.length / entriesPerPage
+        )}`
+        prevBtn.disabled = currentPage === 1
+        nextBtn.disabled =
+          currentPage === Math.ceil(jsonObject.results.length / entriesPerPage)
+
+        const startIndex = (currentPage - 1) * entriesPerPage
+        const endIndex = startIndex + entriesPerPage
+        const pageData = jsonObject.results.slice(startIndex, endIndex)
+
+        // console.log(pageData)
+
+        let i = 0
+        pageData.forEach((entry) => {
+          ids[i] = entry.ID
           text += "<tr id='row" + i + "'>"
+          text += "<td id='Name" + i + "'><span>" + entry.Name + '</span></td>'
           text +=
-            "<td id='Name" +
-            i +
-            "'><span>" +
-            jsonObject.results[i].Name +
-            '</span></td>'
+            "<td id='phone" + i + "'><span>" + entry.Phone + '</span></td>'
           text +=
-            "<td id='phone" +
-            i +
-            "'><span>" +
-            jsonObject.results[i].Phone +
-            '</span></td>'
-          text +=
-            "<td id='email" +
-            i +
-            "'><span>" +
-            jsonObject.results[i].Email +
-            '</span></td>'
+            "<td id='email" + i + "'><span>" + entry.Email + '</span></td>'
           text +=
             '<td>' +
             "<button type='button' id='edit_button" +
             i +
-            "' class='' onclick='edit_row(" +
+            "' class='edit' onclick='edit_row(" +
             i +
             ")'>" +
             "<span class=''>Edit</span>" +
             '</button>' +
             "<button type='button' id='save_button" +
             i +
-            "' value='Save' class='' onclick='save_row(" +
+            "' value='Save' class='save' onclick='save_row(" +
             i +
             ")' style='display: none'>" +
             "<span class=''>Save</span>" +
             '</button>' +
             "<button type='button' onclick='delete_row(" +
             i +
-            ")' class=''>" +
+            ")' class='delete'>" +
             "<span class=''>Delete</span> " +
             '</button>' +
             '</td>'
           text += '<tr/>'
-        }
+          i++
+        })
 
         document.getElementById('tbody').innerHTML = text
       }
@@ -364,6 +385,16 @@ function delete_row(no) {
     }
   }
 }
+
+prevBtn.addEventListener('click', () => {
+  currentPage--
+  searchContact(searchStr, currentPage)
+})
+
+nextBtn.addEventListener('click', () => {
+  currentPage++
+  searchContact(searchStr, currentPage)
+})
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
