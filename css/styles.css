@@ -224,7 +224,11 @@ input[type='password'] {
 }
 
 #contactAddResult {
+  display: inline-block;
   color: white;
+  text-align: center;
+  width:100%;
+  padding:10px 0;
 }
 
 .actions {

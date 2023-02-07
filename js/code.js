@@ -249,7 +249,7 @@ function searchContact(
         const endIndex = startIndex + entriesPerPage
         const pageData = jsonObject.results.slice(startIndex, endIndex)
 
-        // console.log(pageData)
+        console.log(pageData)
 
         let i = 0
         pageData.forEach((entry) => {
@@ -257,9 +257,9 @@ function searchContact(
           text += "<tr id='row" + i + "'>"
           text += "<td id='Name" + i + "'><span>" + entry.Name + '</span></td>'
           text +=
-            "<td id='phone" + i + "'><span>" + entry.Email + '</span></td>'
+            "<td id='email" + i + "'><span>" + entry.Email + '</span></td>'
           text +=
-            "<td id='email" + i + "'><span>" + entry.Phone + '</span></td>'
+            "<td id='phone" + i + "'><span>" + entry.Phone + '</span></td>'
           text +=
             '<td>' +
             "<button type='button' id='edit_button" +
