@@ -415,4 +415,7 @@ function closeForm() {
   document.getElementById('contact-container').style.background = ''
   document.getElementById('contact-container').style.width = '90%'
   document.getElementById('tableDiv').style.opacity = '1'
+  document.getElementById('contactName').innerHTML = ''
+  document.getElementById('contactPhone').innerHTML = ''
+  document.getElementById('contactEmail').innerHTML = ''
 }
